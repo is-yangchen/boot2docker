@@ -21,6 +21,7 @@ test -f '/var/lib/boot2docker/profile' && . '/var/lib/boot2docker/profile'
 : ${KEY:="${CERTDIR}key.pem"}
 
 start() {
+    DOCKER_TLS=no
     # Not enabling Docker daemon TLS by default.
     if [ "$DOCKER_TLS" != "no" ]; then
         CERTHOSTNAMES="$(hostname -s),$(hostname -i)"
@@ -72,6 +73,9 @@ start() {
         cp "$KEY" "$USERCFG"
         chown -R docker:staff "$USERCFG"
     fi
+
+    DOCKER_HOST="-H tcp://0.0.0.0:2376"
+    EXTRA_ARGS="--auth=identity"
 
     mkdir -p "$DOCKER_DIR"
 
