@@ -1,3 +1,6 @@
+This is Boot2Docker trunk (after 1.3.2) with this docker installed:
+https://bfirsh.s3.amazonaws.com/docker/docker-1.3.1-dev-identity-auth
+
 # Boot2Docker
 
 Boot2Docker is a lightweight Linux distribution made specifically to run
