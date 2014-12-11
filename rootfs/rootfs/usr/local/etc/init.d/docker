@@ -74,8 +74,9 @@ start() {
         chown -R docker:staff "$USERCFG"
     fi
 
+    mkdir -p /var/lib/docker/auth.d
     DOCKER_HOST="-H tcp://0.0.0.0:2376"
-    EXTRA_ARGS="--auth=identity"
+    EXTRA_ARGS="--auth=identity --auth-authorized-dir=/var/lib/docker/auth.d"
 
     mkdir -p "$DOCKER_DIR"
 
